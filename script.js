@@ -114,13 +114,25 @@ const businesses = [
 // Creating a container for the DOM output
 const outputContainer = document.querySelector(`#output`);
 // Foreach method
-outputContainer.innerHTML = `<h1>Active Businesses</h1>`;
+// outputContainer.innerHTML = `<h1>Active Businesses</h1>`;
 // For each loop for printing business information from the array to the DOM
 // businesses.forEach((singleBusiness) => {
 // 	outputContainer.innerHTML += `<h2>${singleBusiness.companyName}</h2>
 // 	<p>${singleBusiness.addressFullStreet}</p>
 // 	<p>${singleBusiness.addressCity}, ${singleBusiness.addressStateCode} ${singleBusiness.addressZipCode}</p>`; //Made city, state, zip one line
 // });
+
+// Practice: Big Spenders
+// Array to contain all the big spenders
+// Ask questions about later. Feel like there is an easier way to do it. Doesnt really seem to use the filter at all
+// Is there a way to use filter to loop inside the array without a loop statement? Tried and notihng would log
+const bigSpenders = businesses.filter(business => {
+	business.orders.forEach(element => {
+		if(element > 9000){
+			// console.log(business.companyName)
+		}
+	});
+})
 
 // Filter method
 // Filter for businesses in New York
@@ -141,20 +153,75 @@ const purchasingAgentsArray = businesses.map(singleBusiness => {
 	}
 })
 // console.log(purchasingAgentsArray)
-purchasingAgentsArray.forEach(element => {
-	outputContainer.innerHTML += `<h1>${element.purchasingAgent}</h1>
-	<p>Purchasing Agent: ${element.agentName.nameFirst} ${element.agentName.nameLast}</p>
-	<p>Phone Number: ${element.phoneWork}</p<
-	`
-});
+// purchasingAgentsArray.forEach(element => {
+// 	outputContainer.innerHTML += `<h1>${element.purchasingAgent}</h1>
+// 	<p>Purchasing Agent: ${element.agentName.nameFirst} ${element.agentName.nameLast}</p>
+// 	<p>Phone Number: ${element.phoneWork}</p<
+// 	`
+// });
 
 // Reduce method
 // Takes an array and makes it one thing
 let total = 0
 const numbersArray = [1, 2, 3, 4, 5, 6]
 const addedArray = numbersArray.reduce((numbersTotal, currentValue) => numbersTotal += currentValue) // Start point only needed if starting specific place. Can also do strings
-console.log(addedArray)
+// console.log(addedArray)
 
 const wordArray = [`word1`, `word2`, `word3`, `word4`]
-const combinedWordArray = wordArray.reduce((finalArray, currentWord) => finalArray += `${currentWord} `, "")
-console.log(combinedWordArray)
+const combinedWordArray = wordArray.reduce((finalArray, currentWord) => finalArray += `${currentWord} `, "") //Using "" to let it know its working with a string. Can also use numbers to let it know its working with numbers
+// console.log(combinedWordArray)
+
+// Lightning Exercise 4: Use the reduce method on the following array to determine how much total rain fell last month.
+const monthlyRainfall = [23, 13, 27, 20, 20, 31, 33, 26, 19, 12, 14, 12, 10]
+const totalRainfall = monthlyRainfall.reduce((totalValue, currentValue) => totalValue += currentValue)
+// console.log(totalRainfall)
+
+// Lightning Exercise 5: Use the reduce method on the following array to build a sentence.
+const words = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
+const sentence = words.reduce((finalSentence, currentWord) => finalSentence += `${currentWord} `, "")
+// console.log(sentence)
+
+
+// Sort Method
+const ascendingArray = monthlyRainfall.sort((a, b) => a > b ? 1 : -1)
+// console.log(ascendingArray)
+// Long hand if statement
+const ifAscendingArray = monthlyRainfall.sort((a, b) => {
+	if(a > b){
+		return 1
+	} else {
+		return -1
+	}
+})
+// console.log(ifAscendingArray)
+
+
+// Solar System
+const planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"]
+
+/*
+    Use the forEach method to add the name of each planet
+    to a section element in your HTML with an id of "planets".
+    Use string templates to construct the DOM elements.
+*/
+const planetEl = document.getElementById("planets")
+planets.forEach(element => {
+	outputContainer.innerHTML += `<h2>${element}</h2>`
+});
+/*
+    Use the map method to create a new array where the
+    first letter of each planet is capitalized. Use the
+    `toUpperCase()` method on strings.
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
+*/
+const upperCasePlanets = planets.map(x => x.charAt(0).toUpperCase() + x.slice(1))
+console.log(upperCasePlanets)
+
+/*
+    Use the filter method to create a new array that
+    contains planets with the letter 'e'. Use the `includes()`
+    method on strings.
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+*/
