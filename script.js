@@ -111,7 +111,7 @@ const businesses = [
 		addressCity: 'Watrous'
 	}
 ];
-// Creating a container for the output
+// Creating a container for the DOM output
 const outputContainer = document.querySelector(`#output`);
 // Foreach method
 outputContainer.innerHTML = `<h1>Active Businesses</h1>`;
@@ -126,11 +126,9 @@ outputContainer.innerHTML = `<h1>Active Businesses</h1>`;
 // Filter for businesses in New York
 const newYorkBusinessArray = businesses.filter((singleBusiness) => singleBusiness.addressStateCode === 'NY');
 // console.log(newYorkBusinessArray)
-
 // Lightning Exercise 2 : Use filter() to create another array named manufacturingBusinesses that will contain all businesses in the manufacturing industry. Display those to the DOM.
 const manufacturingBusinesses = businesses.filter((singleBusiness) => singleBusiness.companyIndustry === `Manufacturing`);
 // console.log(manufacturingBusinesses);
-
 
 // Map Method
 // Only want array with purchasing agents
