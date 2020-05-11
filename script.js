@@ -147,3 +147,14 @@ purchasingAgentsArray.forEach(element => {
 	<p>Phone Number: ${element.phoneWork}</p<
 	`
 });
+
+// Reduce method
+// Takes an array and makes it one thing
+let total = 0
+const numbersArray = [1, 2, 3, 4, 5, 6]
+const addedArray = numbersArray.reduce((numbersTotal, currentValue) => numbersTotal += currentValue) // Start point only needed if starting specific place. Can also do strings
+console.log(addedArray)
+
+const wordArray = [`word1`, `word2`, `word3`, `word4`]
+const combinedWordArray = wordArray.reduce((finalArray, currentWord) => finalArray += `${currentWord} `, "")
+console.log(combinedWordArray)
